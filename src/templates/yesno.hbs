@@ -1,6 +1,14 @@
-<div class="race{{class race}}">
+<div class="race race-yesno{{class race}}">
   <p class="type">{{race}}</p>
-  <div class="legend">
+  <div class="symbol">
+    <i class="icon-yes"></i>
+  </div>
+  {{#each options}}
+    <p class="opt">
+      {{shortName}}<span class="count">{{shortnum count}}</span>
+    </p>
+  {{/each}}
+  <div class="legend" style="display:none;">
     {{#each options}}
       <p class="opt"><span class="color{{class shortName}}"></span>{{shortName}}</p>
     {{/each}}

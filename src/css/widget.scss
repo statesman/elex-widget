@@ -14,6 +14,11 @@ $visual-grid: true !global;
         opacity: .75;
         margin-right: 3px;
       }
+      > i {
+        margin-left: 2px;
+        margin-right: -2px;
+        color: #3b3b3b;
+      }
     }
     .hover-grid .opt {
       margin-bottom: 0.45em;
@@ -24,6 +29,24 @@ $visual-grid: true !global;
     }
     .progress-bar-indication {
       margin-bottom: 0.5em;
+    }
+    &.race-yesno {
+      .symbol {
+        text-align: center;
+        margin: .8em 0 .65em 0;
+      }
+      .opt {
+        margin: 0.3em 0 0.5em 0;
+        line-height: 0.9em;
+      }
+      [class^="icon-"]{
+        font-size: 3em;
+        line-height: 0.9em;
+      }
+      .count {
+        float: right;
+        font-weight: 800;
+      }
     }
     .reporting {
       margin-top: 0.4em;

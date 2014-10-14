@@ -11,6 +11,17 @@ define(['handlebars', 'numeral'], function(Handlebars, numeral) {
     }
   });
 
+  /* Usage: {{icon String}} makes a string suitable to use as an HTML class */
+  Handlebars.registerHelper('icon', function(string) {
+    if(typeof string === "undefined") {
+      return null;
+    }
+    else {
+      var str = string.toLowerCase();
+      return new Handlebars.SafeString('icon-' + str);
+    }
+  });
+
   /* Usage: {{shortnum Number}} returns a shortened string representation of  */
   /* an integer using numeral.js */
   Handlebars.registerHelper('shortnum', function(num) {

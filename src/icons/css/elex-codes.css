@@ -1,0 +1,5 @@
+
+.icon-yes:before { content: '\e800'; } /* '' */
+.icon-no:before { content: '\e801'; } /* '' */
+.icon-democrat:before { content: '\e802'; } /* '' */
+.icon-republican:before { content: '\e803'; } /* '' */
