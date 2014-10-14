@@ -1,6 +1,11 @@
-<div class="{{race}} race hover-grid">
+<div class="race{{class race}}">
   <p class="type">{{race}}</p>
-  {{#each candidates}}
-    <p class="opt">{{shortName}}</p>
-  {{/each}}
+  <div class="hover-grid">
+    {{#each options}}
+      <p class="opt">{{shortName}}</p>
+    {{/each}}
+  </div>
+  <div class="reporting">
+    <p>{{reporting}}% reporting</p>
+  </div>
 </div>

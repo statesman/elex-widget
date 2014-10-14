@@ -4,19 +4,19 @@ define(function() {
     {
       'race': 'Governor',
       'reporting': 32,
-      'candidates': [
+      'options': [
         {
           'name': 'Greg Abbott',
           'shortName': 'Abbott',
           'count': 854341,
-          'party': 'rep',
+          'party': 'Republican',
           'percent': 60
         },
         {
           'name': 'Wendy Davis',
           'shortName': 'Davis',
           'count': 253521,
-          'party': 'dem',
+          'party': 'Democrat',
           'percent': 40
         }
       ]
@@ -24,19 +24,19 @@ define(function() {
     {
       'race': 'Lt. Gov',
       'reporting': 32,
-      'candidates': [
+      'options': [
         {
           'name': 'Dan Patrick',
           'shortName': 'Patrick',
           'count': 531413,
-          'party': 'rep',
+          'party': 'Republican',
           'percent': 55
         },
         {
           'name': 'Leticia Van de Putte',
           'shortName': 'Van de Putte',
           'count': 253521,
-          'party': 'dem',
+          'party': 'Democrat',
           'percent': 45
         }
       ]
@@ -45,7 +45,7 @@ define(function() {
       'race': 'Rail bond',
       'reporting': 41,
       'type': 'yesno',
-      'candidates': [
+      'options': [
         {
           'name': 'Yes',
           'shortName': 'Yes',
@@ -63,18 +63,18 @@ define(function() {
     {
       'race': 'Mayor',
       'reporting': 54,
-      'candidates': [
+      'options': [
         {
           'name': 'Dan Patrick',
           'shortName': 'Patrick',
-          'party': 'rep',
+          'party': 'Democrat',
           'count': 843286,
           'percent': 51
         },
         {
           'name': 'Dan Patrick',
           'shortName': 'Patrick',
-          'party': 'dem',
+          'party': 'Democrat',
           'count': 243286,
           'percent': 49
         }
@@ -84,7 +84,7 @@ define(function() {
       'race': 'City council',
       'reporting': 12,
       'type': 'grid',
-      'candidates': [
+      'options': [
         {
           'name': '1',
           'shortName': '1',

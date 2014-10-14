@@ -1,8 +1,11 @@
-<div class="rail race">
+<div class="race{{class race}}">
   <p class="type">{{race}}</p>
   <div class="legend">
-    <p class="opt"><span class="color yes"></span>Yes</p>
-    <p class="opt"><span class="color no"></span>No</p>
+    {{#each options}}
+      <p class="opt"><span class="color{{class shortName}}"></span>{{shortName}}</p>
+    {{/each}}
   </div>
-  <div class="reporting">{{reporting}}% reporting</div>
+  <div class="reporting">
+    <p>{{reporting}}% reporting</p>
+  </div>
 </div>

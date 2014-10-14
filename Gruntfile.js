@@ -31,7 +31,7 @@ module.exports = function(grunt) {
     handlebars: {
       options: {
         namespace: "jst",
-        amd: ['handlebars'],
+        amd: ['handlebars', '../templates/helpers'],
         // Returns the filename, with its parent directory if
         // it's in a subdirectory of the src/templates folder
         processName: function(filePath) {

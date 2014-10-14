@@ -1,12 +1,14 @@
-<div class="{{race}} race">
+<div class="race{{class race}}">
   <p class="type">{{race}}</p>
-  {{#each candidates}}
+  {{#each options}}
     <p class="opt">{{shortName}}<img src="assets/elephant7.png"></p>
-    <div class="progress-bar-indication {{party}}">
+    <div class="progress-bar-indication{{class party}}">
       <span class="meter" style="width: {{percent}}%">
         <p>{{count}}</p>
       </span>
     </div>
   {{/each}}
-  <div class="reporting">{{reporting}}% reporting</div>
+  <div class="reporting">
+    <p>{{reporting}}% reporting</p>
+  </div>
 </div>
