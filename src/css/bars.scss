@@ -24,10 +24,6 @@ $progress-color: white;
     border-bottom-right-radius: 0;
     display: block;
     height: 100%;
-    &.rep {
-      background-color: #E55555;
-      border-color: #9B2525;
-    }
   }
 
   p {
@@ -37,6 +33,13 @@ $progress-color: white;
     color: $progress-color;
     text-shadow: 0 0 1px black;
     font-size: 0.7em;
+  }
+
+  &.rep {
+    > span.meter {
+      background-color: #E55555;
+      border-color: #9B2525;
+    }
   }
 }
 

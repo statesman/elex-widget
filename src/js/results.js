@@ -67,12 +67,14 @@ define(function() {
         {
           'name': 'Dan Patrick',
           'shortName': 'Patrick',
+          'party': 'rep',
           'count': 843286,
           'percent': 51
         },
         {
           'name': 'Dan Patrick',
           'shortName': 'Patrick',
+          'party': 'dem',
           'count': 243286,
           'percent': 49
         }
