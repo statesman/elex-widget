@@ -1,0 +1,14 @@
+{
+  "name": "bitters",
+  "homepage": "https://github.com/thoughtbot/bitters",
+  "version": "0.10.1",
+  "_release": "0.10.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.10.1",
+    "commit": "aceff3d93c4d873de0cbb67dbc890d2862c57f93"
+  },
+  "_source": "git://github.com/thoughtbot/bitters.git",
+  "_target": "~0.10.1",
+  "_originalSource": "bitters"
+}

@@ -65,10 +65,6 @@ dist/
 .tmp/
 
 
-### Bower ###
-bower_components
-
-
 ### Node ###
 # Logs
 logs
