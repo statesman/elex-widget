@@ -1,0 +1,12 @@
+<div class="{{race}} race">
+  <p class="type">{{race}}</p>
+  {{#each candidates}}
+    <p class="opt">{{shortName}}<img src="assets/elephant7.png"></p>
+    <div class="progress-bar-indication">
+      <span class="meter rep" style="width: {{percent}}%">
+        <p>{{count}}</p>
+      </span>
+    </div>
+  {{/each}}
+  <div class="reporting">{{reporting}}% reporting</div>
+</div>
