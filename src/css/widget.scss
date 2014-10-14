@@ -48,6 +48,11 @@ $visual-grid: true !global;
         font-weight: 800;
       }
     }
+    &.race-grid {
+      .reporting {
+        margin-top: 0.65em;
+      }
+    }
     .reporting {
       margin-top: 0.4em;
       font-size: 0.75em;
