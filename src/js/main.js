@@ -9,7 +9,7 @@ require.config({
     underscore: '../../bower_components/underscore/underscore',
     handlebars: '../../bower_components/handlebars/handlebars.runtime',
     jquery: '../../bower_components/jquery/dist/jquery',
-    helpers: '../templates/helpers',
+    numeral: '../../bower_components/numeral/numeral',
     jst: '../../build/templates'
   }
 });

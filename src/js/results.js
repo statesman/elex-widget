@@ -8,14 +8,14 @@ define(function() {
         {
           'name': 'Greg Abbott',
           'shortName': 'Abbott',
-          'count': 854341,
+          'count': 1854341,
           'party': 'Republican',
           'percent': 60
         },
         {
           'name': 'Wendy Davis',
           'shortName': 'Davis',
-          'count': 253521,
+          'count': 1253521,
           'party': 'Democrat',
           'percent': 40
         }
@@ -68,14 +68,14 @@ define(function() {
           'name': 'Dan Patrick',
           'shortName': 'Patrick',
           'party': 'Democrat',
-          'count': 843286,
+          'count': 18286,
           'percent': 51
         },
         {
           'name': 'Dan Patrick',
           'shortName': 'Patrick',
           'party': 'Democrat',
-          'count': 243286,
+          'count': 1456,
           'percent': 49
         }
       ]
