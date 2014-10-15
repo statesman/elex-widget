@@ -1,9 +1,7 @@
 define(['backbone'], function(Backbone) {
 
   var Race = Backbone.Model.extend({
-    initialize: function() {
-      console.log('initializing model');
-    },
+    idAttribute: 'sheet',
 
     defaults: {
       'type': 'bars'

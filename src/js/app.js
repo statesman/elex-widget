@@ -6,12 +6,18 @@ require(['collections/election', 'views/overview', 'jquery', 'pym'], function(El
 
     var election = new Election();
     var overview = new Overview({collection: election, el: '#elex-widget'});
+
     election.fetch({
       success: function() {
         overview.render();
         pymChild.sendHeight();
       }
     });
+
+    setInterval(function() {
+      election.fetch();
+    }, 5000);
+
 
   });
 
