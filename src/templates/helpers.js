@@ -2,7 +2,7 @@ define(['handlebars', 'numeral'], function(Handlebars, numeral) {
 
   /* Usage: {{class String}} makes a string suitable to use as an HTML class */
   Handlebars.registerHelper('class', function(string) {
-    if(typeof string === "undefined") {
+    if(!string) {
       return null;
     }
     else {
@@ -13,7 +13,7 @@ define(['handlebars', 'numeral'], function(Handlebars, numeral) {
 
   /* Usage: {{icon String}} makes a string suitable to use as an HTML class */
   Handlebars.registerHelper('icon', function(string) {
-    if(typeof string === "undefined") {
+    if(!string) {
       return null;
     }
     else {

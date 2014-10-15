@@ -1,6 +1,10 @@
 $gutter: golden-ratio(.25em, 1) !global;
 $visual-grid: true !global;
 
+body {
+  margin: 0;
+}
+
 #elex-widget {
   @include clearfix;
   padding: .15em .75em;
@@ -49,11 +53,11 @@ $visual-grid: true !global;
       }
     }
     &.race-grid {
-      .reporting {
+      .status {
         margin-top: 0.65em;
       }
     }
-    .reporting {
+    .status {
       margin-top: 0.4em;
       font-size: 0.75em;
       color: #3b3b3b;

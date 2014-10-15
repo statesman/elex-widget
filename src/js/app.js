@@ -1,12 +1,14 @@
-require(['collections/election', 'views/overview', 'results', 'jquery'], function(Election, Overview, results, $) {
+require(['collections/election', 'views/overview', 'jquery'], function(Election, Overview, $) {
 
   $(function() {
 
     var election = new Election();
-    election.reset(results);
-
     var overview = new Overview({collection: election, el: '#elex-widget'});
-    overview.render();
+    election.fetch({
+      success: function() {
+        overview.render();
+      }
+    });
 
   });
 

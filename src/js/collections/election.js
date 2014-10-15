@@ -5,7 +5,9 @@ define(['backbone', 'models/race'], function(Backbone, Race) {
       console.log('initializing collection');
     },
 
-    model: Race
+    model: Race,
+
+    url: 'data/data.json'
   });
 
   return Election;
