@@ -1,9 +1,37 @@
 from gspread import Client
 import simplejson as json
-import ConfigParser
+from ConfigParser import ConfigParser
+
+def parse(sheet):
+  """
+  A function to parse a spreadsheet into a race list that can be
+  formatted into JSON and fed to the home page widget.
+  """
+
+  # Get all spreadsheet data
+  opts = sheet.get_all_records()
+
+  # Get reporting
+  status = sheet.acell('f2').value
+
+  # Walk through each option and build a results dictionary, which
+  # will be added to a list of results
+  result = {'race': sheet.title, 'reporting': status}
+  opt_results = []
+  for opt in opts:
+    opt_result = {}
+    opt_result['name'] = opt['Name']
+    opt_result['shortName'] = opt['Short name']
+    opt_result['count'] = opt['Votes']
+    opt_result['party'] = opt['Party']
+    opt_results.append(opt_result)
+
+  result['options'] = opt_results
+
+  return result
 
 # Get config info
-cfg = ConfigParser.ConfigParser()
+cfg = ConfigParser()
 cfg.readfp(open('config.cfg'))
 username = cfg.get('google', 'username')
 password = cfg.get('google', 'password')
@@ -16,29 +44,14 @@ c.login()
 # Get our election results spreadsheet
 s = c.open_by_key(sheet_key)
 
-# Get the gov results
-sheet = s.get_worksheet(0)
-opts = sheet.get_all_records()
-
-# Get reporting
-status = sheet.acell('f2').value
-
-# Walk through each option and build a results dictionary, which
-# will be added to a list of results
-result = {'race': sheet.title, 'reporting': status}
-opt_results = []
-for opt in opts:
-  opt_result = {}
-  opt_result['name'] = opt['Name']
-  opt_result['shortName'] = opt['Short name']
-  opt_result['count'] = opt['Votes']
-  opt_result['party'] = opt['Party']
-  opt_results.append(opt_result)
-
-result['options'] = opt_results
+# Loop through all worksheets in the spreadsheet, parse them
+# and add them to a results list
+results = []
+for sheet in s.worksheets():
+  results.append(parse(sheet))
 
 # Write it all out to JSON
-json_result = json.dumps(result)
+json_result = json.dumps(results)
 json_out = open('data.json', 'w')
 json_out.write(json_result)
 json_out.close()
