@@ -1,4 +1,4 @@
-require(['collections/election', 'views/overview', 'jquery', 'pym'], function(Election, Overview, $, pym) {
+require(['collections/election', 'views/overview', 'views/detail', 'jquery', 'pym'], function(Election, Overview, Detail, $, pym) {
 
   var pymChild = new pym.Child();
 
@@ -11,13 +11,17 @@ require(['collections/election', 'views/overview', 'jquery', 'pym'], function(El
       success: function() {
         overview.render();
         pymChild.sendHeight();
+
+        var race = election.get('od6');
+        var detail = new Detail({model: race, el: '#race-detail'});
+        detail.render();
+        pymChild.sendHeight();
       }
     });
 
     setInterval(function() {
       election.fetch();
     }, 5000);
-
 
   });
 
