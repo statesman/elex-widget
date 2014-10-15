@@ -32,6 +32,9 @@ def parse(sheet):
     total_cast = total_cast + int(cast)
   result['totalcast'] = total_cast
 
+  # Add an ID for the race, which is also its sheet ID
+  result['sheet'] = sheet.id
+
   # Get all spreadsheet data
   opts = sheet.get_all_records()
 
