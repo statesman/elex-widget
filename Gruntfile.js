@@ -97,7 +97,7 @@ module.exports = function(grunt) {
       },
       scripts: {
         files: ['src/js/**.js', 'src/js/**/**.js', 'src/templates/**/*.hbs', 'src/templates/helpers.js'],
-        tasks: ['jshint', 'clean:js', 'handlebars', 'requirejs']
+        tasks: ['jshint', 'clean:js', 'handlebars', 'uglify', 'requirejs']
       },
       styles: {
         files: ['src/css/**.scss'],
@@ -140,7 +140,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-concurrent');
 
-  grunt.registerTask('build', ['clean', 'sass', 'handlebars', 'jshint', 'requirejs']);
+  grunt.registerTask('build', ['clean', 'sass', 'handlebars', 'jshint', 'uglify', 'requirejs']);
   grunt.registerTask('default', ['build', 'concurrent']);
 
 };
