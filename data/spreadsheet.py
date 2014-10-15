@@ -42,7 +42,7 @@ def parse(sheet):
     opt_result = {}
     opt_result['name'] = opt['Name']
     if opt['Short name'] == "":
-      opt_result['shortname'] = opt['Name']
+      opt_result['shortName'] = opt['Name']
     else:
       opt_result['shortName'] = opt['Short name']
     votes = int(opt['Votes'])
