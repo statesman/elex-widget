@@ -1,3 +1,4 @@
+from __future__ import division
 from gspread import Client
 import simplejson as json
 from ConfigParser import ConfigParser
@@ -14,15 +15,23 @@ def parse(sheet):
   # Get reporting
   status = sheet.acell('f2').value
 
+  # Calculate total votes cast
+  votes_cast = sheet.col_values(4)
+  total_cast = 0
+  for cast in votes_cast[1:]:
+    total_cast = total_cast + int(cast)
+
   # Walk through each option and build a results dictionary, which
   # will be added to a list of results
-  result = {'race': sheet.title, 'reporting': status}
+  result = {'race': sheet.title, 'reporting': status, 'cast': total_cast}
   opt_results = []
   for opt in opts:
     opt_result = {}
+    votes = int(opt['Votes'])
     opt_result['name'] = opt['Name']
     opt_result['shortName'] = opt['Short name']
-    opt_result['count'] = opt['Votes']
+    opt_result['count'] = votes
+    opt_result['percent'] = round(votes / total_cast * 100, 2)
     opt_result['party'] = opt['Party']
     opt_results.append(opt_result)
 
