@@ -20,6 +20,11 @@ def parse(sheet):
   if tpl != "":
     result['type'] = tpl
 
+  # Set a val that notes if the race should show in overviews
+  overview = sheet.acell('h2').value
+  if overview != "":
+    result['overview'] = True
+
   # Calculate total votes cast
   votes_cast = sheet.col_values(4)
   total_cast = 0

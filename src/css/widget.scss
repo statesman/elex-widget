@@ -7,7 +7,6 @@ body {
 
 #elex-widget {
   @include clearfix;
-  padding: .15em .75em;
   .race {
     @include span-columns(1 of 5);
     .opt {
