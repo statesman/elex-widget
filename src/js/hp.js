@@ -1,3 +1,3 @@
 (function() {
-  var pymParent = new pym.Parent('hp-elex-widget', 'http://stage.host.coxmediagroup.com/aas/projects/databases/election/widget.html', {});
+  var pymParent = new pym.Parent('hp-elex-widget', 'http://projects.statesman.com/databases/election/widget.html', {});
 }());

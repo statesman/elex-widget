@@ -3,6 +3,8 @@
 ### Project files ###
 # Config file
 data/config.cfg
+# Data file
+data/data.json
 
 
 ### Python ###
