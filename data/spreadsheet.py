@@ -57,7 +57,10 @@ def parse(sheet):
       opt_result['party'] = opt['Party']
     opt_results.append(opt_result)
 
-  result['options'] = opt_results
+  # Sort the ballot options by vote count
+  sorted_opts = sorted(opt_results, key=lambda k: k['count'], reverse=True)
+
+  result['options'] = sorted_opts
 
   return result
 
