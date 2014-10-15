@@ -59,6 +59,15 @@ module.exports = function(grunt) {
       }
     },
 
+    // Use Uglify to bundle up a pym file for the home page
+    uglify: {
+      homepage: {
+        files: {
+          'dist/hp.js': ['bower_components/pym.js/src/pym.js', 'src/js/hp.js']
+        }
+      }
+    },
+
     // Runs the r.js optimizer
     requirejs: {
       compile: {
@@ -128,6 +137,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-concurrent');
 
   grunt.registerTask('build', ['clean', 'sass', 'handlebars', 'jshint', 'requirejs']);
