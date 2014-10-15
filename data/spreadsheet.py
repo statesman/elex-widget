@@ -9,30 +9,44 @@ def parse(sheet):
   formatted into JSON and fed to the home page widget.
   """
 
-  # Get all spreadsheet data
-  opts = sheet.get_all_records()
+  # Set up our race result dict
+  result = {'race': sheet.title}
 
   # Get reporting
-  status = sheet.acell('f2').value
+  result['status'] = sheet.acell('f2').value
+
+  # Set a template value, if one exists
+  tpl = sheet.acell('g2').value
+  if tpl != "":
+    result['type'] = tpl
 
   # Calculate total votes cast
   votes_cast = sheet.col_values(4)
   total_cast = 0
   for cast in votes_cast[1:]:
     total_cast = total_cast + int(cast)
+  result['totalcast'] = total_cast
+
+  # Get all spreadsheet data
+  opts = sheet.get_all_records()
 
   # Walk through each option and build a results dictionary, which
   # will be added to a list of results
-  result = {'race': sheet.title, 'reporting': status, 'cast': total_cast}
   opt_results = []
   for opt in opts:
     opt_result = {}
-    votes = int(opt['Votes'])
     opt_result['name'] = opt['Name']
-    opt_result['shortName'] = opt['Short name']
+    if opt['Short name'] == "":
+      opt_result['shortname'] = opt['Name']
+    else:
+      opt_result['shortName'] = opt['Short name']
+    votes = int(opt['Votes'])
     opt_result['count'] = votes
     opt_result['percent'] = round(votes / total_cast * 100, 2)
-    opt_result['party'] = opt['Party']
+    if opt['Party'] == "":
+      opt_result['party'] = None
+    else:
+      opt_result['party'] = opt['Party']
     opt_results.append(opt_result)
 
   result['options'] = opt_results
