@@ -1,4 +1,6 @@
-require(['collections/election', 'views/overview', 'jquery'], function(Election, Overview, $) {
+require(['collections/election', 'views/overview', 'jquery', 'pym'], function(Election, Overview, $, pym) {
+
+  var pymChild = new pym.Child();
 
   $(function() {
 
@@ -7,6 +9,7 @@ require(['collections/election', 'views/overview', 'jquery'], function(Election,
     election.fetch({
       success: function() {
         overview.render();
+        pymChild.sendHeight();
       }
     });
 

@@ -10,6 +10,7 @@ require.config({
     handlebars: '../../bower_components/handlebars/handlebars.runtime',
     jquery: '../../bower_components/jquery/dist/jquery',
     numeral: '../../bower_components/numeral/numeral',
-    jst: '../../build/templates'
+    jst: '../../build/templates',
+    pym: '../../bower_components/pym.js/src/pym'
   }
 });
