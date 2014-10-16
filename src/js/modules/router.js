@@ -41,13 +41,16 @@ define(['backbone', 'collections/election', 'views/overview', 'views/detail', 'j
       this.election = new Election();
       var overview = new Overview({collection: this.election, el: '#elex-widget'});
       this.election.fetch({
+        cache: false,
         success: function() {
           overview.render();
         }
       });
       var self = this;
       setInterval(function() {
-        self.election.fetch();
+        self.election.fetch({
+          cache: false
+        });
       }, 5000);
     },
 
