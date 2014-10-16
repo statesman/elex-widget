@@ -23,7 +23,10 @@ def parse(sheet):
   # Set a val that notes if the race should show in overviews
   overview = sheet.acell('h2').value
   if overview != "":
+    overview_count = int(overview)
     result['overview'] = True
+  else:
+    overview_count = 0
 
   # Calculate total votes cast
   votes_cast = sheet.col_values(4)
@@ -41,6 +44,7 @@ def parse(sheet):
   # Walk through each option and build a results dictionary, which
   # will be added to a list of results
   opt_results = []
+  opt_count = 0
   for opt in opts:
     opt_result = {}
     opt_result['name'] = opt['Name']
@@ -55,7 +59,10 @@ def parse(sheet):
       opt_result['party'] = None
     else:
       opt_result['party'] = opt['Party']
+    if opt_count < overview_count:
+      opt_result['showInOverview'] = True
     opt_results.append(opt_result)
+    opt_count = opt_count + 1
 
   # Sort the ballot options by vote count
   sorted_opts = sorted(opt_results, key=lambda k: k['count'], reverse=True)
