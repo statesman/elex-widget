@@ -1,5 +1,7 @@
 <div class="race{{class race}}">
-  <p class="type">{{race}}</p>
+  <a href="#/details/{{sheet}}">
+    <p class="type">{{race}}</p>
+  </a>
   {{#each options}}
     {{#if showInOverview}}
       <p class="opt">{{shortName}}<i class="{{icon party}}"></i></p>
