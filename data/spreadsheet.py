@@ -35,6 +35,11 @@ def parse(sheet):
     total_cast = total_cast + int(cast)
   result['totalcast'] = total_cast
 
+  # Get the data source
+  source = sheet.acell('i2').value
+  if source != "":
+    result['dataSource'] = source
+
   # Add an ID for the race, which is also its sheet ID
   result['sheet'] = sheet.id
 
