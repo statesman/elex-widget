@@ -18,7 +18,7 @@ define(['handlebars', 'numeral'], function(Handlebars, numeral) {
     }
     else {
       var str = string.toLowerCase();
-      return new Handlebars.SafeString('icon-' + str);
+      return new Handlebars.SafeString('<i class="icon-' + str + '"></i>');
     }
   });
 
