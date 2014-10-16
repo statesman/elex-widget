@@ -1,4 +1,4 @@
-define(['backbone', 'views/leader'], function(Backbone, Leader) {
+define(['backbone', 'views/leader', 'modules/window'], function(Backbone, Leader, win) {
 
   var Overview = Backbone.View.extend({
     initialize: function() {
@@ -15,6 +15,7 @@ define(['backbone', 'views/leader'], function(Backbone, Leader) {
     render: function() {
       this.$el.empty();
       _.each(this.collection.models, this.renderSingle, this);
+      win.sendHeight();
       return this;
     }
   });

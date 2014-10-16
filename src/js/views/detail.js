@@ -1,4 +1,4 @@
-define(['backbone', 'jst'], function(Backbone, JST) {
+define(['backbone', 'jst', 'modules/window'], function(Backbone, JST, win) {
 
   var Detail = Backbone.View.extend({
     initialize: function() {
@@ -9,6 +9,7 @@ define(['backbone', 'jst'], function(Backbone, JST) {
 
     render: function() {
       this.$el.html(this.template(this.model.toJSON()));
+      win.sendHeight();
     }
   });
 
