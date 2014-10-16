@@ -42,4 +42,10 @@ define(['handlebars', 'numeral'], function(Handlebars, numeral) {
     return new Handlebars.SafeString(num.format(format));
   });
 
+  /* Usage: {{longnum Number}} returns a formatted long integer using numeral.js */
+  Handlebars.registerHelper('longnum', function(num) {
+    var num = numeral(num);
+    return new Handlebars.SafeString(num.format('0,0'));
+  });
+
 });
