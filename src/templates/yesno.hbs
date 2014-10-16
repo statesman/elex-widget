@@ -1,7 +1,5 @@
 <div class="race race-yesno{{class race}}">
-  <a href="#/details/{{sheet}}">
-    <p class="type">{{race}}</p>
-  </a>
+  <p class="type">{{race}}</p>
   <div class="symbol">
     <i class="icon-yes"></i>
   </div>
@@ -10,12 +8,7 @@
       {{shortName}}<span class="count">{{shortnum count}}</span>
     </p>
   {{/each}}
-  <div class="legend" style="display:none;">
-    {{#each options}}
-      <p class="opt"><span class="color{{class shortName}}"></span>{{shortName}}</p>
-    {{/each}}
-  </div>
   <div class="status">
-    <p>{{status}}</p>
+    <p><a href="#/details/{{sheet}}"><i class="icon-expand"></i>Details</a></p>
   </div>
 </div>

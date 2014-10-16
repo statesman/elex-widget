@@ -1,7 +1,5 @@
 <div class="race{{class race}}">
-  <a href="#/details/{{sheet}}">
-    <p class="type">{{race}}</p>
-  </a>
+  <p class="type">{{race}}</p>
   {{#each options}}
     {{#if showInOverview}}
       <p class="opt">{{shortName}}<i class="{{icon party}}"></i></p>
@@ -13,6 +11,6 @@
     {{/if}}
   {{/each}}
   <div class="status">
-    <p>{{status}}</p>
+    <p><a href="#/details/{{sheet}}"><i class="icon-expand"></i>Details</a></p>
   </div>
 </div>

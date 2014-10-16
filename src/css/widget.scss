@@ -37,13 +37,13 @@ body {
       .symbol {
         text-align: center;
         margin: .8em 0 .65em 0;
+        [class^="icon-"]{
+          font-size: 3em;
+          line-height: 0.9em;
+        }
       }
       .opt {
         margin: 0.3em 0 0.5em 0;
-        line-height: 0.9em;
-      }
-      [class^="icon-"]{
-        font-size: 3em;
         line-height: 0.9em;
       }
       .count {
@@ -55,6 +55,9 @@ body {
       .status {
         margin-top: 0.65em;
       }
+    }
+    .status {
+      text-align: center;
     }
   }
 }

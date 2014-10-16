@@ -8,7 +8,7 @@
   "glyphs": [
     {
       "uid": "fed6fdd980c7ca06ce253326f55b93a1",
-      "css": "democrat",
+      "css": "repulican",
       "code": 59394,
       "src": "custom_icons",
       "selected": true,
@@ -22,7 +22,7 @@
     },
     {
       "uid": "9b1073c44aed85cdcccebf4a03d5d64c",
-      "css": "republican",
+      "css": "democrat",
       "code": 59395,
       "src": "custom_icons",
       "selected": true,
@@ -44,6 +44,12 @@
       "uid": "7533e68038fc6d520ede7a7ffa0a2f64",
       "css": "no",
       "code": 59393,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "dfec4ffa849d8594c2e4b86f6320b8a6",
+      "css": "expand",
+      "code": 59396,
       "src": "fontawesome"
     }
   ]
