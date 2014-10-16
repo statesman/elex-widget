@@ -91,6 +91,23 @@ body {
   }
 }
 
+#embed {
+  padding: 1em;
+  &:empty {
+    display: none;
+  }
+  p.close {
+    display: none;
+  }
+  .icon-winner {
+    color: #50AA1D;
+    margin-left: .25em;
+  }
+  th {
+    font-weight: 600;
+  }
+}
+
 .right {
   float: right;
 }

@@ -29,7 +29,8 @@ define(['backbone', 'collections/election', 'views/overview', 'views/detail', 'j
 
     routes: {
       '': 'overview',
-      'details/:race': 'details'
+      'details/:race': 'details',
+      'embed/:race': 'embed'
     },
 
     overview: function() {
@@ -53,6 +54,19 @@ define(['backbone', 'collections/election', 'views/overview', 'views/detail', 'j
       var race = this.election.get(raceId);
       var detail = new Detail({model: race});
       this.detailPane.show(detail);
+    },
+
+    embed: function(raceId) {
+      var election = new Election();
+
+      election.fetch({
+        success: function() {
+          var race = election.get(raceId);
+          var detail = new Detail({model: race});
+          detail.render();
+          $('#embed').html(detail.el);
+        }
+      });
     }
 
   });
