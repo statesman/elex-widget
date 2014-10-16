@@ -89,6 +89,26 @@ body {
     float: right;
     font-size: 0.8em;
   }
+  .horizontal-nav {
+    margin-bottom: 1em;
+    > li {
+      display: inline-block;
+      font-size: .8em;
+      margin-right: 0.5em;
+      border-bottom: 1px solid #777;
+      a {
+        color: #777;
+        font-weight: 300;
+      }
+      &.active {
+        border-bottom-color: #333;
+        a {
+          color: #333;
+          font-weight: 600;
+        }
+      }
+    }
+  }
 }
 
 #embed {

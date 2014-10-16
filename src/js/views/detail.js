@@ -15,6 +15,7 @@ define(['backbone', 'jst'], function(Backbone, JST) {
 
     render: function() {
       this.el = this.template(this.model.toJSON());
+      return this;
     }
   });
 

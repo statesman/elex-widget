@@ -1,4 +1,4 @@
-define(['backbone', 'collections/election', 'views/overview', 'views/detail', 'jquery', 'modules/window'], function(Backbone, Election, Overview, Detail, $, win) {
+define(['backbone', 'collections/election', 'views/overview', 'views/detail', 'jquery', 'modules/window', 'views/group'], function(Backbone, Election, Overview, Detail, $, win, Group) {
 
   // A class that can handle view-swapping
   var ViewPane = function(el){
@@ -14,8 +14,8 @@ define(['backbone', 'collections/election', 'views/overview', 'views/detail', 'j
       if(typeof this.view !== "undefined") {
         if(this.view.close) {
           this.view.close();
-          this.$el.empty();
         }
+        this.$el.empty();
       }
     }
   };
@@ -30,6 +30,7 @@ define(['backbone', 'collections/election', 'views/overview', 'views/detail', 'j
     routes: {
       '': 'overview',
       'details/:race': 'details',
+      'group/:group(/:race)': 'groupDetail',
       'embed/:race': 'embed'
     },
 
@@ -54,6 +55,21 @@ define(['backbone', 'collections/election', 'views/overview', 'views/detail', 'j
       var race = this.election.get(raceId);
       var detail = new Detail({model: race});
       this.detailPane.show(detail);
+    },
+
+    _getGroup: function(groupName) {
+      var filtered = this.election.filter(function(race) {
+        return race.get('group') === groupName;
+      });
+      var newCollection = new Election();
+      newCollection.reset(filtered);
+      return newCollection;
+    },
+
+    groupDetail: function(groupName, raceId) {
+      var newCollection = this._getGroup(groupName);
+      var group = new Group({collection: newCollection, active: raceId});
+      this.detailPane.show(group);
     },
 
     embed: function(raceId) {

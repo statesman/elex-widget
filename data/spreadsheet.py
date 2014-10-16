@@ -12,6 +12,13 @@ def parse(sheet):
   # Set up our race result dict
   result = {'race': sheet.title}
 
+  # Add the short/long names if they exist
+  longName = sheet.acell('m2').value
+  if longName != "":
+    result['raceLong'] = longName
+  else:
+    result['raceLong'] = sheet.title
+
   # Get reporting
   result['status'] = sheet.acell('f2').value
 
@@ -45,6 +52,11 @@ def parse(sheet):
 
   # Include whether the race is partisan
   result['partisanRace'] = sheet.acell('j2').value == "Yes"
+
+  # Include the group name if there is one
+  group = sheet.acell('l2').value
+  if group != "":
+    result['group'] = group.lower()
 
   # Get all spreadsheet data
   opts = sheet.get_all_records()

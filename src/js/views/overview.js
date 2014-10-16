@@ -1,4 +1,4 @@
-define(['backbone', 'views/leader', 'modules/window'], function(Backbone, Leader, win) {
+define(['backbone', 'views/leader', 'modules/window', 'jst'], function(Backbone, Leader, win, JST) {
 
   var Overview = Backbone.View.extend({
     initialize: function() {
@@ -15,6 +15,7 @@ define(['backbone', 'views/leader', 'modules/window'], function(Backbone, Leader
     render: function() {
       this.$el.empty();
       _.each(this.collection.models, this.renderSingle, this);
+      this.$el.append(JST.council());
       win.sendHeight();
       return this;
     }

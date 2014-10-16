@@ -1,0 +1,40 @@
+<p class="close"><a href="#/"><i class="icon-close"></i>Close</a></p>
+<ul class="horizontal-nav">
+  {{#each races}}
+    <li{{#if attributes.active}} class="active"{{/if}}><a href="#/group/{{attributes.group}}/{{attributes.sheet}}">{{attributes.race}}</a></li>
+  {{/each}}
+</ul>
+<div class="group-item">
+  <h1>{{active.raceLong}}</h1>
+  <div class="detail">
+    <table class="opts">
+      <thead>
+        <tr>
+          <th>Candidate</th>
+          {{#if active.partisanRace}}
+            <th>Party</th>
+          {{/if}}
+          <th>Votes</th>
+          <th>Share</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each active.options}}
+          <tr>
+            <td>{{name}}{{#if winner}}<i class="icon-winner"></i>{{/if}}</td>
+            {{#if ../partisanRace}}
+              <td>{{party}}</td>
+            {{/if}}
+            <td>{{longnum count}}</td>
+            <td>{{percent}}%</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  <div class="status">
+    <p>
+      <span>{{active.status}}</span> {{#if active.dataSource}}<span class="right">Source: {{active.dataSource}}</span>{{/if}}
+    </p>
+  </div>
+</div>
