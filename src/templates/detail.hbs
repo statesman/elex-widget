@@ -4,7 +4,9 @@
     <thead>
       <tr>
         <th>Candidate</th>
-        <th>Party</th>
+        {{#if partisanRace}}
+          <th>Party</th>
+        {{/if}}
         <th>Votes</th>
         <th>Share</th>
       </tr>
@@ -13,7 +15,9 @@
       {{#each options}}
         <tr>
           <td>{{name}}</td>
-          <td>{{party}}</td>
+          {{#if ../partisanRace}}
+            <td>{{party}}</td>
+          {{/if}}
           <td>{{longnum count}}</td>
           <td>{{percent}}%</td>
         </tr>

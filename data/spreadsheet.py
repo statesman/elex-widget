@@ -43,6 +43,9 @@ def parse(sheet):
   # Add an ID for the race, which is also its sheet ID
   result['sheet'] = sheet.id
 
+  # Include whether the race is partisan
+  result['partisanRace'] = sheet.acell('j2').value == "Yes"
+
   # Get all spreadsheet data
   opts = sheet.get_all_records()
 
