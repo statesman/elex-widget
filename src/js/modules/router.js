@@ -52,23 +52,18 @@ define(['backbone', 'collections/election', 'views/overview', 'views/detail', 'j
     },
 
     details: function(raceId) {
-      var race = this.election.get(raceId);
-      var detail = new Detail({model: race});
-      this.detailPane.show(detail);
-    },
-
-    _getGroup: function(groupName) {
-      var filtered = this.election.filter(function(race) {
-        return race.get('group') === groupName;
-      });
-      var newCollection = new Election();
-      newCollection.reset(filtered);
-      return newCollection;
+      if(typeof this.election !== "undefined") {
+        var race = this.election.get(raceId);
+        var detail = new Detail({model: race});
+        this.detailPane.show(detail);
+      }
+      else {
+        this.navigate('', {trigger: true})
+      }
     },
 
     groupDetail: function(groupName, raceId) {
-      var newCollection = this._getGroup(groupName);
-      var group = new Group({collection: newCollection, active: raceId});
+      var group = new Group({collection: this.election, group: groupName, race: raceId});
       this.detailPane.show(group);
     },
 

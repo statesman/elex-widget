@@ -1,7 +1,7 @@
 <p class="close"><a href="#/"><i class="icon-close"></i>Close</a></p>
 <ul class="horizontal-nav">
-  {{#each races}}
-    <li{{#if attributes.active}} class="active"{{/if}}><a href="#/group/{{attributes.group}}/{{attributes.sheet}}">{{attributes.race}}</a></li>
+  {{#each links}}
+    <li{{#if active}} class="active"{{/if}}><a href="{{url}}">{{race}}</a></li>
   {{/each}}
 </ul>
 <div class="group-item">

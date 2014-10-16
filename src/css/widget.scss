@@ -67,13 +67,14 @@ body {
 
 #race-detail {
   background: #fafafa;
-  padding: 1em;
+  padding: 0 1em;
   margin-top: 1em;
-  &:empty {
-    display: none;
-  }
   h1 {
+    padding-top: .75em;
     margin-bottom: .25em;
+  }
+  .status {
+    padding-bottom: 1em;
   }
   table.opts {
     margin-top: .25em;
@@ -88,9 +89,10 @@ body {
   p.close {
     float: right;
     font-size: 0.8em;
+    margin-top: 1em;
   }
   .horizontal-nav {
-    margin-bottom: 1em;
+    padding-top: 1.25em;
     > li {
       display: inline-block;
       font-size: .8em;
@@ -112,9 +114,12 @@ body {
 }
 
 #embed {
-  padding: 1em;
-  &:empty {
-    display: none;
+  padding: 0 1em;
+  h1 {
+    padding-top: .75em;
+  }
+  .status {
+    padding-bottom: 1em;
   }
   p.close {
     display: none;

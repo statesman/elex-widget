@@ -2,7 +2,8 @@ define(['backbone', 'views/detail', 'jst'], function(Backbone, Detail, JST) {
 
   var Group = Backbone.View.extend({
     initialize: function(options) {
-      this.active = options.active;
+      this.race = options.race;
+      this.group = options.group;
 
       this.collection.on('change', this.render, this);
     },
@@ -16,21 +17,30 @@ define(['backbone', 'views/detail', 'jst'], function(Backbone, Detail, JST) {
     template: JST.group,
 
     render: function() {
+      var links = [];
       var active;
-      if(this.active === null) {
-        active = this.collection.at(0);
+      if(this.race !== null) {
+        active = this.collection.get(this.race);
       }
-      else {
-        active = this.collection.get(this.active);
-      }
-      active.set('active', true, {silent: true});
+      this.collection.each(function(race) {
+        if(race.get('group') === this.group) {
+          if(typeof active === "undefined") {
+            active = this.collection.get(race);
+          }
+          links.push({
+            active: race.get('sheet') === this.race || race.get('sheet') === active.get('sheet'),
+            url: '#/group/' + this.group + '/' + race.get('sheet'),
+            race: race.get('race')
+          });
+        }
+      }, this);
       var data = {
-        races: this.collection.models,
-        active: active.attributes
+        active: active.attributes,
+        links: links
       };
       this.el = this.template(data);
       active.unset('active', {silent: true});
-      return this.el;
+      return this;
     }
 
   });
