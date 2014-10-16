@@ -1,12 +1,14 @@
 <div class="race{{class race}}">
   <p class="type">{{race}}</p>
   {{#each options}}
-    <p class="opt">{{shortName}}<i class="{{icon party}}"></i></p>
-    <div class="progress-bar-indication{{class party}}">
-      <span class="meter" style="width: {{percent}}%">
-        <p>{{shortnum count}}</p>
-      </span>
-    </div>
+    {{#if showInOverview}}
+      <p class="opt">{{shortName}}<i class="{{icon party}}"></i></p>
+      <div class="progress-bar-indication{{class party}}">
+        <span class="meter" style="width: {{percent}}%">
+          <p>{{shortnum count}}</p>
+        </span>
+      </div>
+    {{/if}}
   {{/each}}
   <div class="status">
     <p>{{status}}</p>

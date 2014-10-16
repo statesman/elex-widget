@@ -13,7 +13,7 @@
 
   h1 {
     font-family: $sans-serif-2;
-    font-size: 1.8em;
+    font-size: 1.6em;
     margin-bottom: .5em;
 
     @include media($medium-screen) {
@@ -48,7 +48,7 @@
     margin-bottom: .3em;
   }
 
-  p {
+  p, td, th {
     font-family: $sans-serif;
     line-height: 1.4em;
     font-size: .9em;

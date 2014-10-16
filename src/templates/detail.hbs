@@ -1,17 +1,25 @@
 <h1>{{race}}</h1>
 <div class="detail">
-  <div class="opts">
-    {{#each options}}
-      <div class="opt">
-        <h3>{{name}}</h3>
-        <p>{{party}}<i class="{{icon party}}"></i></p>
-        <p>{{longnum count}} votes ({{percent}}%)</p>
-      </div>
-    {{/each}}
-  </div>
-  <div class="chart">
-    <h1>CHART</h1>
-  </div>
+  <table class="opts">
+    <thead>
+      <tr>
+        <th>Candidate</th>
+        <th>Party</th>
+        <th>Votes</th>
+        <th>Share</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each options}}
+        <tr>
+          <td>{{name}}</td>
+          <td>{{party}}</td>
+          <td>{{longnum count}}</td>
+          <td>{{percent}}%</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
 </div>
 <div class="status">
   <p>{{status}}</p>
