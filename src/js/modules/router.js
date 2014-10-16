@@ -1,9 +1,30 @@
-define(['backbone', 'collections/election', 'views/overview', 'views/detail'], function(Backbone, Election, Overview, Detail) {
+define(['backbone', 'collections/election', 'views/overview', 'views/detail', 'jquery', 'modules/window'], function(Backbone, Election, Overview, Detail, $, win) {
+
+  // A class that can handle view-swapping
+  var ViewPane = function(el){
+    this.$el = $(el);
+    this.show = function(currentView) {
+      this.close();
+      currentView.render();
+      this.$el.html(currentView.el);
+      win.sendHeight();
+      this.view = currentView;
+    };
+    this.close = function() {
+      if(typeof this.view !== "undefined") {
+        if(this.view.close) {
+          this.view.close();
+          this.$el.empty();
+        }
+      }
+    }
+  };
 
   var App = Backbone.Router.extend({
 
     initialize: function() {
       Backbone.history.start();
+      this.detailPane = new ViewPane('#race-detail');
     },
 
     routes: {
@@ -12,6 +33,9 @@ define(['backbone', 'collections/election', 'views/overview', 'views/detail'], f
     },
 
     overview: function() {
+      if(typeof this.detailPane !== "undefined") {
+        this.detailPane.close();
+      }
       this.election = new Election();
       var overview = new Overview({collection: this.election, el: '#elex-widget'});
       this.election.fetch({
@@ -27,8 +51,8 @@ define(['backbone', 'collections/election', 'views/overview', 'views/detail'], f
 
     details: function(raceId) {
       var race = this.election.get(raceId);
-      var detail = new Detail({model: race, el: '#race-detail'});
-      detail.render();
+      var detail = new Detail({model: race});
+      this.detailPane.show(detail);
     }
 
   });
