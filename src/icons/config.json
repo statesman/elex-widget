@@ -8,7 +8,7 @@
   "glyphs": [
     {
       "uid": "fed6fdd980c7ca06ce253326f55b93a1",
-      "css": "repulican",
+      "css": "republican",
       "code": 59394,
       "src": "custom_icons",
       "selected": true,
@@ -33,6 +33,12 @@
       "search": [
         "donkey2"
       ]
+    },
+    {
+      "uid": "43ab845088317bd348dee1d975700c48",
+      "css": "winner",
+      "code": 59397,
+      "src": "fontawesome"
     },
     {
       "uid": "acf41aa4018e58d49525665469e35665",

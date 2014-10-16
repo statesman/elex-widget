@@ -21,6 +21,9 @@ body {
         margin-left: 2px;
         margin-right: -2px;
         color: #3b3b3b;
+        &.icon-winner {
+          color: #50AA1D;
+        }
       }
     }
     .hover-grid .opt {
@@ -77,6 +80,10 @@ body {
   }
   th {
     font-weight: 600;
+  }
+  .icon-winner {
+    color: #50AA1D;
+    margin-left: .25em;
   }
 }
 

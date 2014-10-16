@@ -14,7 +14,7 @@
     <tbody>
       {{#each options}}
         <tr>
-          <td>{{name}}</td>
+          <td>{{name}}{{#if winner}}<i class="icon-winner"></i>{{/if}}</td>
           {{#if ../partisanRace}}
             <td>{{party}}</td>
           {{/if}}

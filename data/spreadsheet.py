@@ -75,6 +75,10 @@ def parse(sheet):
   # Sort the ballot options by vote count
   sorted_opts = sorted(opt_results, key=lambda k: k['count'], reverse=True)
 
+  # Add a boolean to the first value if the race has been called
+  if sheet.acell('k2').value == "Yes":
+    sorted_opts[0]['winner'] = True
+
   result['options'] = sorted_opts
 
   return result
