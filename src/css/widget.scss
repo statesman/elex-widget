@@ -70,6 +70,11 @@ body {
     padding-top: .75em;
     margin-bottom: .25em;
   }
+  .yesno {
+    table thead tr th:first-child {
+      visibility: hidden;
+    }
+  }
   .status {
     padding-bottom: 1em;
   }
