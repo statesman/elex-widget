@@ -23,24 +23,11 @@ define(['handlebars', 'numeral'], function(Handlebars, numeral) {
     }
   });
 
-  /* Usage: {{shortnum Number}} returns a shortened string representation of  */
+  /* Usage: {{shortpercent Number}} returns a shortened string representation of  */
   /* an integer using numeral.js */
-  Handlebars.registerHelper('shortnum', function(num) {
-    var format;
-    if(num >= 1000000) {
-      format = '0.0a';
-    }
-    else if(num >= 100000) {
-      format = '0a';
-    }
-    else if(num >= 1000) {
-      format = '0.0a';
-    }
-    else {
-      format = '0';
-    }
+  Handlebars.registerHelper('shortPercent', function(num) {
     var num = numeral(num);
-    return new Handlebars.SafeString(num.format(format));
+    return new Handlebars.SafeString(num.format('0'));
   });
 
   /* Usage: {{longnum Number}} returns a formatted long integer using numeral.js */
