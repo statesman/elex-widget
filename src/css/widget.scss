@@ -8,12 +8,14 @@ body {
 .header {
   background: #477DCA;
   color: #fff;
-  font-size: .85em;
-  padding: .5em .75em .5em .75em;
+  padding: .5em .75em .4em .75em;
   margin-bottom: 1em;
   h1 {
     margin-bottom: 0;
     font-weight: 400;
+    font-size: .85em;
+    text-transform: uppercase;
+    text-align: center;
   }
 }
 
