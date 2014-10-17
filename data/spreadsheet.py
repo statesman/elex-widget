@@ -71,7 +71,6 @@ def parse(sheet):
   # Walk through each option and build a results dictionary, which
   # will be added to a list of results
   opt_results = []
-  opt_count = 0
   for opt in opts:
     if opt['Name'] != "":
       opt_result = {}
@@ -87,10 +86,7 @@ def parse(sheet):
         opt_result['party'] = None
       else:
         opt_result['party'] = opt['Party']
-      if opt_count < overview_count:
-        opt_result['showInOverview'] = True
       opt_results.append(opt_result)
-      opt_count = opt_count + 1
 
       print '- ' + opt_result['name'] + ': ' + str(opt_result['count']) + ' (' + str(opt_result['percent']) + '%)'
 
@@ -98,6 +94,10 @@ def parse(sheet):
 
   # Sort the ballot options by vote count
   sorted_opts = sorted(opt_results, key=lambda k: k['count'], reverse=True)
+
+  # Flag each result that should show in the overview
+  for opt_result in sorted_opts[:overview_count]:
+    opt_result['showInOverview'] = True
 
   # Add a boolean to the first value if the race has been called
   if sheet.acell('f5').value == "Yes":
