@@ -39,7 +39,7 @@ define(['backbone', 'views/detail', 'jst'], function(Backbone, Detail, JST) {
         active: active.attributes,
         links: links
       };
-      this.el = this.template(data);
+      this.$el.html(this.template(data));
       active.unset('active', {silent: true});
       return this;
     }

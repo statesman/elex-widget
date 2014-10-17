@@ -2,11 +2,11 @@ define(['backbone', 'collections/election', 'views/overview', 'views/detail', 'j
 
   // A class that can handle view-swapping
   var ViewPane = function(el){
-    this.$el = $(el);
+    this.el = el;
     this.show = function(currentView) {
       this.close();
       currentView.render();
-      this.$el.html(currentView.el);
+      currentView.$el.appendTo(this.el);
       win.sendHeight();
       this.view = currentView;
     };
@@ -15,7 +15,6 @@ define(['backbone', 'collections/election', 'views/overview', 'views/detail', 'j
         if(this.view.close) {
           this.view.close();
         }
-        this.$el.empty();
       }
     }
   };
