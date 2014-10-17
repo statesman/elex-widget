@@ -2,7 +2,7 @@
   <p class="type">{{race}}</p>
   {{#each options}}
     {{#if showInOverview}}
-      <p class="opt">{{shortName}}{{icon party}}</i></p>
+      <p class="opt{{class shortName}}{{#if winner}} winner{{/if}}">{{shortName}}{{icon party}}{{#if winner}}<i class="icon-winner"></i>{{/if}}</i></p>
       <div class="progress-bar-indication{{class party}}">
         <span class="meter" style="width: {{percent}}%">
           <p>{{shortnum count}}</p>

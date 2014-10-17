@@ -6,7 +6,8 @@ define(['handlebars', 'numeral'], function(Handlebars, numeral) {
       return null;
     }
     else {
-      var str = string.replace(' ', '-').toLowerCase();
+      var re = new RegExp(' ', 'g');
+      var str = string.replace(re, '-').toLowerCase();
       return new Handlebars.SafeString(' ' + str);
     }
   });

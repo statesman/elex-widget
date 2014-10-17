@@ -60,6 +60,12 @@ body {
       text-align: center;
     }
   }
+  /* Tweak for odd formatting on LVDP's row if she wins */
+  .race {
+    .opt.van-de-putte.winner {
+      width: 75%;
+    }
+  }
 }
 
 #race-detail {
