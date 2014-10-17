@@ -49,4 +49,24 @@ define(['handlebars', 'numeral'], function(Handlebars, numeral) {
     return new Handlebars.SafeString(num.format('0,0'));
   });
 
+  /* Usage: {{labelClass percent "outside" OR "inside"}} returns a hidden class if the bar label should be hidden */
+  Handlebars.registerHelper('labelClass', function(percent, position) {
+    if(position === "outside") {
+      if (percent > 30) {
+        return " hidden";
+      }
+      else {
+        return null;
+      }
+    }
+    else if(position === "inside") {
+      if (percent <= 30) {
+        return " hidden";
+      }
+      else {
+        return null;
+      }
+    }
+  });
+
 });

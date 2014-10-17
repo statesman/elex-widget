@@ -63,6 +63,12 @@
       "css": "expand",
       "code": 59396,
       "src": "fontawesome"
+    },
+    {
+      "uid": "e2d87e7631c608efe71762a9f4c95e75",
+      "css": "election",
+      "code": 59399,
+      "src": "elusive"
     }
   ]
 }

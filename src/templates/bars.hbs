@@ -4,9 +4,10 @@
     {{#if showInOverview}}
       <p class="opt{{class shortName}}{{#if winner}} winner{{/if}}">{{shortName}}{{icon party}}{{#if winner}}<i class="icon-winner"></i>{{/if}}</i></p>
       <div class="progress-bar-indication{{class party}}">
-        <span class="meter" style="width: {{percent}}%">
-          <p>{{shortnum count}}</p>
-        </span>
+        <div class="meter">
+          <span class="bar" style="width: {{percent}}%"><span class="inside-label{{labelClass percent "inside"}}">{{shortnum count}}</span></span>
+          <span class="outside-label{{labelClass percent "outside"}}">{{shortnum count}}</span>
+        </div>
       </div>
     {{/if}}
   {{/each}}

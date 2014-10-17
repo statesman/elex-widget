@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'elex';
-  src: url('../font/elex.eot?9450784');
-  src: url('../font/elex.eot?9450784#iefix') format('embedded-opentype'),
-       url('../font/elex.woff?9450784') format('woff'),
-       url('../font/elex.ttf?9450784') format('truetype'),
-       url('../font/elex.svg?9450784#elex') format('svg');
+  src: url('../font/elex.eot?98940188');
+  src: url('../font/elex.eot?98940188#iefix') format('embedded-opentype'),
+       url('../font/elex.woff?98940188') format('woff'),
+       url('../font/elex.ttf?98940188') format('truetype'),
+       url('../font/elex.svg?98940188#elex') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -14,7 +14,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'elex';
-    src: url('../font/elex.svg?9450784#elex') format('svg');
+    src: url('../font/elex.svg?98940188#elex') format('svg');
   }
 }
 */
@@ -57,3 +57,4 @@
 .icon-expand:before { content: '\e804'; } /* '' */
 .icon-winner:before { content: '\e805'; } /* '' */
 .icon-close:before { content: '\e806'; } /* '' */
+.icon-election:before { content: '\e807'; } /* '' */
