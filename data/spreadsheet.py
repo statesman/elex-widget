@@ -9,11 +9,13 @@ def parse(sheet):
   formatted into JSON and fed to the home page widget.
   """
 
+  print "Processing results for " + sheet.title
+
   # Set up our race result dict
   result = {'race': sheet.title}
 
   # Add the short/long names if they exist
-  longName = sheet.acell('m2').value
+  longName = sheet.acell('h5').value
   if longName != "":
     result['raceLong'] = longName
   else:
@@ -54,9 +56,14 @@ def parse(sheet):
   result['partisanRace'] = sheet.acell('j2').value == "Yes"
 
   # Include the group name if there is one
-  group = sheet.acell('l2').value
+  group = sheet.acell('g5').value
   if group != "":
     result['group'] = group.lower()
+
+  # Include the subtitle if it exists
+  subtitle = sheet.acell('i5').value
+  if subtitle != "":
+    result['subtitle'] = subtitle
 
   # Get all spreadsheet data
   opts = sheet.get_all_records()
@@ -66,29 +73,34 @@ def parse(sheet):
   opt_results = []
   opt_count = 0
   for opt in opts:
-    opt_result = {}
-    opt_result['name'] = opt['Name']
-    if opt['Short name'] == "":
-      opt_result['shortName'] = opt['Name']
-    else:
-      opt_result['shortName'] = opt['Short name']
-    votes = int(opt['Votes'])
-    opt_result['count'] = votes
-    opt_result['percent'] = round(votes / total_cast * 100, 2)
-    if opt['Party'] == "":
-      opt_result['party'] = None
-    else:
-      opt_result['party'] = opt['Party']
-    if opt_count < overview_count:
-      opt_result['showInOverview'] = True
-    opt_results.append(opt_result)
-    opt_count = opt_count + 1
+    if opt['Name'] != "":
+      opt_result = {}
+      opt_result['name'] = opt['Name']
+      if opt['Short name'] == "":
+        opt_result['shortName'] = opt['Name']
+      else:
+        opt_result['shortName'] = opt['Short name']
+      votes = int(opt['Votes'])
+      opt_result['count'] = votes
+      opt_result['percent'] = round(votes / total_cast * 100, 2)
+      if opt['Party'] == "":
+        opt_result['party'] = None
+      else:
+        opt_result['party'] = opt['Party']
+      if opt_count < overview_count:
+        opt_result['showInOverview'] = True
+      opt_results.append(opt_result)
+      opt_count = opt_count + 1
+
+      print '- ' + opt_result['name'] + ': ' + str(opt_result['count']) + ' (' + str(opt_result['percent']) + '%)'
+
+  print ''
 
   # Sort the ballot options by vote count
   sorted_opts = sorted(opt_results, key=lambda k: k['count'], reverse=True)
 
   # Add a boolean to the first value if the race has been called
-  if sheet.acell('k2').value == "Yes":
+  if sheet.acell('f5').value == "Yes":
     sorted_opts[0]['winner'] = True
 
   result['options'] = sorted_opts
@@ -121,4 +133,5 @@ json_out = open('data.json', 'w')
 json_out.write(json_result)
 json_out.close()
 
+print 'Writing JSON results'
 print json_result

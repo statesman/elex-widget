@@ -30,7 +30,8 @@ define(['backbone', 'views/detail', 'jst'], function(Backbone, Detail, JST) {
           links.push({
             active: race.get('sheet') === this.race || race.get('sheet') === active.get('sheet'),
             url: '#/group/' + this.group + '/' + race.get('sheet'),
-            race: race.get('race')
+            race: race.get('race'),
+            subtitle: race.get('subtitle')
           });
         }
       }, this);

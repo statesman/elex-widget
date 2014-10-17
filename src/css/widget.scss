@@ -96,11 +96,16 @@ body {
     > li {
       display: inline-block;
       font-size: .8em;
-      margin-right: 0.5em;
-      border-bottom: 1px solid #777;
+      margin-right: .5em;
+      margin-bottom: .5em;
+      border-bottom: 1px solid #adadad;
+      line-height: 1.3em;
       a {
         color: #777;
         font-weight: 300;
+        span {
+          font-size: .9em;
+        }
       }
       &.active {
         border-bottom-color: #333;
