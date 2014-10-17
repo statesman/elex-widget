@@ -26,9 +26,6 @@ body {
         }
       }
     }
-    .hover-grid .opt {
-      margin-bottom: 0.45em;
-    }
     .legend .opt {
       display: inline-block;
       margin-right: 0.35em;
@@ -54,9 +51,9 @@ body {
         font-weight: 800;
       }
     }
-    &.race-grid {
-      .status {
-        margin-top: 0.65em;
+    &.city-council {
+      img {
+        margin-bottom: -.5em;
       }
     }
     .status {
