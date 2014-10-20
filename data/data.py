@@ -2,8 +2,15 @@ from __future__ import division
 from gspread import Client
 import simplejson as json
 from ConfigParser import ConfigParser
+from elections import AP
 
-def parse(sheet):
+
+# Get config from file
+cfg = ConfigParser()
+cfg.readfp(open('config.cfg'))
+
+
+def parse(sheet, state):
   """
   A function to parse a spreadsheet into a race list that can be
   formatted into JSON and fed to the home page widget.
@@ -71,29 +78,39 @@ def parse(sheet):
   # Walk through each option and build a results dictionary, which
   # will be added to a list of results
   opt_results = []
-  for opt in opts:
-    if opt['Name'] != "":
-      opt_result = {}
-      opt_result['name'] = opt['Name']
-      if opt['Short name'] == "":
-        opt_result['shortName'] = opt['Name']
-      else:
-        opt_result['shortName'] = opt['Short name']
-      votes = int(opt['Votes'])
-      opt_result['count'] = votes
-      opt_result['percent'] = round(votes / total_cast * 100, 2)
-      if opt['Party'] == "":
-        opt_result['party'] = None
-      else:
-        opt_result['party'] = opt['Party']
-      opt_results.append(opt_result)
 
-      print '- ' + opt_result['name'] + ': ' + str(opt_result['count']) + ' (' + str(opt_result['percent']) + '%)'
+  use_ap = sheet.acell('f8').value
+  # Use AP for results
+  if use_ap == "Yes":
+    race_number = sheet.acell('g8').value
+    sorted_opts = get_ap_results(state, race_number)    
+    for opt in sorted_opts:
+      report_results(opt['name'], opt['count'], opt['percent'])
+  # Use the spreadsheet for results
+  else:
+    for opt in opts:
+      if opt['Name'] != "":
+        opt_result = {}
+        opt_result['name'] = opt['Name']
+        if opt['Short name'] == "":
+          opt_result['shortName'] = opt['Name']
+        else:
+          opt_result['shortName'] = opt['Short name']
+        votes = int(opt['Votes'])
+        opt_result['count'] = votes
+        opt_result['percent'] = round(votes / total_cast * 100, 2)
+        if opt['Party'] == "":
+          opt_result['party'] = None
+        else:
+          opt_result['party'] = opt['Party']
+        opt_results.append(opt_result)
+
+        report_results(opt_result['name'], opt_result['count'], opt_result['percent'])
+
+    # Sort the ballot options by vote count
+    sorted_opts = sorted(opt_results, key=lambda k: k['count'], reverse=True)
 
   print ''
-
-  # Sort the ballot options by vote count
-  sorted_opts = sorted(opt_results, key=lambda k: k['count'], reverse=True)
 
   # Flag each result that should show in the overview
   for opt_result in sorted_opts[:overview_count]:
@@ -107,9 +124,33 @@ def parse(sheet):
 
   return result
 
+
+def report_results(opt, count, percent):
+  """
+  Write the results for a single candidate to the console
+  """
+  print '- ' + opt + ': ' + str(count) + ' (' + str(percent) + '%)'
+
+
+def get_ap_results(state, race_number):
+  """
+  Fetch Associated Press results from the AP's election service by race number
+  """
+  race = state.filter_races(ap_race_number=race_number)[0]
+  results = []
+  for result in race.state.results:
+    results.append({
+      'name': result.candidate.name,
+      'count': result.vote_total,
+      'percent': result.vote_total_percent,
+      'party': result.candidate.party,
+      'shortName': result.candidate.abbrev_name
+    })
+
+  return results
+
+
 # Get config info
-cfg = ConfigParser()
-cfg.readfp(open('config.cfg'))
 username = cfg.get('google', 'username')
 password = cfg.get('google', 'password')
 sheet_key = cfg.get('google', 'spreadsheet')
@@ -118,6 +159,13 @@ sheet_key = cfg.get('google', 'spreadsheet')
 c = Client(auth=(username, password))
 c.login()
 
+# Connect to AP and get the state file
+ap_username = cfg.get('ap', 'username')
+ap_password = cfg.get('ap', 'password')
+ap_state_code = cfg.get('ap', 'state')
+client = AP(ap_username, ap_password)
+state = client.get_state(ap_state_code)
+
 # Get our election results spreadsheet
 s = c.open_by_key(sheet_key)
 
@@ -125,7 +173,7 @@ s = c.open_by_key(sheet_key)
 # and add them to a results list
 results = []
 for sheet in s.worksheets():
-  results.append(parse(sheet))
+  results.append(parse(sheet, state))
 
 # Write it all out to JSON
 json_result = json.dumps(results)
