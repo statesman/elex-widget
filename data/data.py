@@ -22,22 +22,22 @@ def parse(sheet, state):
   result = {'race': sheet.title}
 
   # Add the short/long names if they exist
-  longName = sheet.acell('h5').value
+  longName = sheet.acell('i5').value
   if longName != "":
     result['raceLong'] = longName
   else:
     result['raceLong'] = sheet.title
 
   # Get reporting
-  result['status'] = sheet.acell('f2').value
+  result['status'] = sheet.acell('g2').value
 
   # Set a template value, if one exists
-  tpl = sheet.acell('g2').value
+  tpl = sheet.acell('h2').value
   if tpl != "":
     result['type'] = tpl
 
   # Set a val that notes if the race should show in overviews
-  overview = sheet.acell('h2').value
+  overview = sheet.acell('i2').value
   if overview != "":
     overview_count = int(overview)
     result['overview'] = True
@@ -45,14 +45,14 @@ def parse(sheet, state):
     overview_count = 0
 
   # Calculate total votes cast
-  votes_cast = sheet.col_values(4)
+  votes_cast = sheet.col_values(5)
   total_cast = 0
   for cast in votes_cast[1:]:
     total_cast = total_cast + int(cast)
   result['totalcast'] = total_cast
 
   # Get the data source
-  source = sheet.acell('i2').value
+  source = sheet.acell('j2').value
   if source != "":
     result['dataSource'] = source
 
@@ -60,15 +60,15 @@ def parse(sheet, state):
   result['sheet'] = sheet.id
 
   # Include whether the race is partisan
-  result['partisanRace'] = sheet.acell('j2').value == "Yes"
+  result['partisanRace'] = sheet.acell('k2').value == "Yes"
 
   # Include the group name if there is one
-  group = sheet.acell('g5').value
+  group = sheet.acell('h5').value
   if group != "":
     result['group'] = group.lower()
 
   # Include the subtitle if it exists
-  subtitle = sheet.acell('i5').value
+  subtitle = sheet.acell('j5').value
   if subtitle != "":
     result['subtitle'] = subtitle
 
@@ -79,11 +79,11 @@ def parse(sheet, state):
   # will be added to a list of results
   opt_results = []
 
-  use_ap = sheet.acell('f8').value
+  use_ap = sheet.acell('g8').value
   # Use AP for results
   if use_ap == "Yes":
-    race_number = sheet.acell('g8').value
-    sorted_opts = get_ap_results(state, race_number)    
+    race_number = sheet.acell('h8').value
+    sorted_opts = get_ap_results(state, race_number)
     for opt in sorted_opts:
       report_results(opt['name'], opt['count'], opt['percent'])
   # Use the spreadsheet for results
@@ -117,7 +117,7 @@ def parse(sheet, state):
     opt_result['showInOverview'] = True
 
   # Add a boolean to the first value if the race has been called
-  if sheet.acell('f5').value == "Yes":
+  if sheet.acell('g5').value == "Yes":
     sorted_opts[0]['winner'] = True
 
   result['options'] = sorted_opts
