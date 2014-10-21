@@ -99,6 +99,8 @@ def parse(sheet, state):
         votes = int(opt['Votes'])
         opt_result['count'] = votes
         opt_result['percent'] = round(votes / total_cast * 100, 2)
+        if opt['Profile'] != "":
+          opt_result['profile'] = opt['Profile']
         if opt['Party'] == "":
           opt_result['party'] = None
         else:

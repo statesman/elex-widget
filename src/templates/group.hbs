@@ -21,7 +21,7 @@
       <tbody>
         {{#each active.options}}
           <tr>
-            <td>{{name}}{{#if winner}}<i class="icon-winner"></i>{{/if}}</td>
+            <td>{{#if profile}}<a href="{{profile}}" target="_blank">{{/if}}{{name}}{{#if profile}}</a>{{/if}}{{#if winner}}<i class="icon-winner"></i>{{/if}}</td>
             {{#if ../partisanRace}}
               <td>{{party}}</td>
             {{/if}}
