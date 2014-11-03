@@ -12,36 +12,11 @@
 
   h1 {
     font-size: 1.6em;
-    margin-bottom: .5em;
+    margin-bottom: .25em;
 
     @include media($medium-screen) {
       font-size: 2.4em;
     }
-  }
-
-  h2 {
-    font-size: 1.2em;
-    font-weight: 400;
-    line-height: 1.4em;
-    margin-bottom: .9em;
-
-    @include media($medium-screen) {
-      font-size: 1.4em;
-    }
-  }
-
-  h3 {
-    font-size: 1.2em;
-    font-weight: 400;
-    line-height: 1.3em;
-    margin-bottom: .4em;
-  }
-
-  p.date {
-    color: transparentize($base-font-color, .6);
-    font-family: $sans-serif;
-    font-size: .9em;
-    margin-bottom: .3em;
   }
 
   * {
@@ -52,24 +27,4 @@
     font-size: .9em;
     font-weight: 300;
     line-height: 1.4em;
-  }
-
-  a.read-more {
-    display: inline-block;
-    font-weight: 700;
-    font-size: .8em;
-    text-transform: uppercase;
-    margin-left: .2em;
-    position: relative;
-
-    span {
-      position: absolute;
-      font-size: 1.5em;
-      top: -1px;
-      right: -12px;
-    }
-  }
-
-  p.author {
-    font-family: $sans-serif;
   }

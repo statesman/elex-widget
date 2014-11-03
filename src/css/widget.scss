@@ -10,14 +10,12 @@ body {
   border-right: 1px solid #26394e;
   border-bottom: 1px solid #26394e;
   border-left: 1px solid #697e95;
-  font-weight: bold;
   background: #375371;
   color: #fff;
   padding: .5em .75em .4em .75em;
   margin-bottom: 1em;
   h1 {
     margin-bottom: 0;
-    font-weight: 400;
     font-size: .85em;
     text-transform: uppercase;
     text-align: center;
@@ -85,7 +83,6 @@ body {
   margin-top: 1em;
   h1 {
     padding-top: .75em;
-    margin-bottom: .25em;
   }
   .yesno {
     table thead tr th:first-child {
