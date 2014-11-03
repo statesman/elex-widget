@@ -6,7 +6,12 @@ body {
 }
 
 .header {
-  background: #477DCA;
+  border-top: 1px solid #697e95;
+  border-right: 1px solid #26394e;
+  border-bottom: 1px solid #26394e;
+  border-left: 1px solid #697e95;
+  font-weight: bold;
+  background: #375371;
   color: #fff;
   padding: .5em .75em .4em .75em;
   margin-bottom: 1em;
@@ -24,6 +29,7 @@ body {
   .race {
     @include span-columns(1 of 5);
     .opt {
+      font-size: .8em;
       margin-bottom: 0.1em;
       > i {
         margin-left: 2px;
@@ -52,7 +58,7 @@ body {
       }
       .count {
         float: right;
-        font-weight: 800;
+        font-weight: 700;
       }
     }
     &.city-council {
@@ -162,4 +168,17 @@ body {
   p {
     margin-bottom: 0;
   }
+}
+
+
+a {
+  color: #000098;
+  &:hover {
+    color: #006;
+  }
+}
+
+td {
+  font-size: .9em;
+  padding: .6em 0;
 }
