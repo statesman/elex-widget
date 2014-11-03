@@ -50,7 +50,7 @@ define(['backbone', 'collections/election', 'views/overview', 'views/detail', 'j
         self.election.fetch({
           cache: false
         });
-      }, 5000);
+      }, 300000);
     },
 
     details: function(raceId) {
