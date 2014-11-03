@@ -2,9 +2,11 @@
 
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
-This repo contains the code for our election night home page results display for the 2014 general election. It's a Backbone app with an overview view that shows top candidates in all races for which we have data with bar charts for each race and a detail view that pops up below the overview and contains precise totals and all candidates.
+This repo contains the code for our election night home page results display for the 2014 general election. It's a Backbone app that can be updated using a Google spreadsheet, which is served up as a flat file thanks to a simple Python scraper.
 
-The widget is designed to be run in an `iframe`. Because the height of the document changes as the detail view is opened and based on how many candidates/races are shown in the overview [pym.js](http://blog.apps.npr.org/pym.js/) is required.
+The widget has an overview view that shows top candidates in all races for which we have data with bar charts for each race and a detail view that pops up below the overview with precise totals for all candidates.
+
+The widget is designed to be run in an `<iframe>`. Because the height of the document changes as the detail view is opened and based on how many candidates/races are shown in the overview [pym.js](http://blog.apps.npr.org/pym.js/) is required.
 
 New results are fetched in the background and the widget updates in place thanks to [`Backbone.fetch`](http://backbonejs.org/#Collection-fetch), which runs at a configurable interval using `setInterval`, which is initialized in [the router ](https://github.com/statesman/elex/blob/80be36263c67adb6af7e081d376d1797be19e582/src/js/modules/router.js#L49-L53).
 
@@ -26,7 +28,7 @@ There are few customizations in the code for the 2014 general (there is some cus
   - *Partisan* turns toggles the blue/red color coding of the bars in the overview and the display of party affiliation next to each candidate
   - *Called*, when set to yes, displays a green check mark next to the winning candidate
   - *Group* can be used to simplify the detail view. Any race with the same string in the *Group* field will be shown on the same tabbed detail view with the name of the race and the *Subtitle* as the tab link/title.
-4. After setting up the spreadsheet, copy `data/config.cfg.sample` to `data/config.cfg`. Fill in:
+4. After setting up the spreadsheet, copy [`data/config.cfg.sample`](data/config.cfg.sample) to `data/config.cfg`. Fill in:
   - your Google account credentials
   - the key for the spreadsheet to pull results from.
   - a user name and password for the AP elections service
@@ -43,7 +45,7 @@ To make the changes visible in the widget, simply run `data/data.py`, which will
 
 #### Embedding
 
-The widget can be embedded by including [pym.js](http://blog.apps.npr.org/pym.js/) (which is located in [`bower_components/`](bower_components/pym.js/src)) and a `<div>` that will be filled with the `<iframe>`. For additional information about embedding see the [pym.js documentation](http://blog.apps.npr.org/pym.js/). See the example below:
+The widget can be embedded by including [pym.js](http://blog.apps.npr.org/pym.js/) (which is located in [`bower_components/`](bower_components/pym.js/src)) and a `<div>` that will be filled with the `<iframe>`. For additional information about embedding see the [pym.js documentation](http://blog.apps.npr.org/pym.js/) and the example below:
 
 ```html
 <div id="elex-widget"></div>
