@@ -159,6 +159,7 @@ body {
 }
 
 .status {
+  @include clearfix;
   margin-top: 0.4em;
   font-size: 0.75em;
   color: #3b3b3b;
