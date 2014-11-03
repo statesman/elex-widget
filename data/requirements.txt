@@ -1,0 +1,2 @@
+gspread==0.2.2
+python-elections==1.0.0
