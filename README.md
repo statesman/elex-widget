@@ -45,17 +45,11 @@ To make the changes visible in the widget, simply run `data/data.py`, which will
 
 #### Embedding
 
-The widget can be embedded by including [pym.js](http://blog.apps.npr.org/pym.js/) (which is located in [`bower_components/`](bower_components/pym.js/src)) and a `<div>` that will be filled with the `<iframe>`. For additional information about embedding see the [pym.js documentation](http://blog.apps.npr.org/pym.js/) and the example below:
+The widget can be embedded by including [pym.js](http://blog.apps.npr.org/pym.js/) (which is located in [`bower_components/`](bower_components/pym.js/src)) and a `<div>` that will be filled with the `<iframe>`. See below for an example of the basic embed using pym.js. For additional information see the [pym.js documentation](http://blog.apps.npr.org/pym.js/).
 
 ```html
-<div id="elex-widget"></div>
 <script src="path/to/pym.js"></script>
-<script>
-  var pymParent = new pym.Parent(
-    'elex-widget',
-    '/path/to/widget.html'
-  );
-</script>
+<div data-pym-src="path/to/widget.html"></div>
 ```
 
 ## Developing
