@@ -137,6 +137,25 @@ def report_results(opt, count, percent):
   print '- ' + opt + ': ' + str(count) + ' (' + str(percent) + '%)'
 
 
+def get_party_name(party):
+  """
+  Normalize the AP party name to our format
+  """
+  parties = {
+    'GOP': 'Republican',
+    'Dem': 'Democrat',
+    'Lib': 'Libertarian',
+    'Grn': 'Green'
+  }
+  return parties[party]
+
+
+def get_abbrev_name(name):
+  if name == 'VndPtt':
+    return 'Van de Putte'
+  else:
+    return name
+
 def get_ap_results(state, race_number):
   """
   Fetch Associated Press results from the AP's election service by race number
@@ -147,9 +166,9 @@ def get_ap_results(state, race_number):
     results.append({
       'name': result.candidate.name,
       'count': result.vote_total,
-      'percent': result.vote_total_percent,
-      'party': result.candidate.party,
-      'shortName': result.candidate.abbrev_name
+      'percent': "%.2f" % result.vote_total_percent,
+      'party': get_party_name(result.candidate.party),
+      'shortName': get_abbrev_name(result.candidate.abbrev_name)
     })
 
   return results
